@@ -1,0 +1,14 @@
+# 1. **`python -m venv myVenv`**: Creates a virtual environment named `myVenv` to isolate dependencies.
+# 2. **`source myVenv/Scripts/activate`**: Activates the virtual environment.
+# 3. **`pip freeze`**: Lists the installed Python packages in the environment.
+# 4. **`pip install django`**: Installs the Django framework in the virtual environment.
+# 5. **`pip freeze`**: Displays installed packages again, now showing Django.
+# 6. **`django-admin startproject myProject`**: Creates a new Django project named `myProject`.
+# 7. **`cd myProject`**: Changes the directory to the newly created project.
+# 8. **`django-admin startapp myApp`**: Creates a new Django application called `myApp` within the project.
+# 9. **`ls`**: Lists the contents of the current directory.
+# 10. **`python manage.py migrate`**: Applies database migrations to set up necessary tables.
+# 11. **`python manage.py createsuperuser`**: Creates a superuser account for accessing the Django admin interface.
+# 12. **`python manage.py runserver`**: Starts the Django development server to test the project locally.
+
+# Each command is essential for setting up and running a Django project.

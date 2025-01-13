@@ -1,0 +1,173 @@
+{% extends 'myApp/base.html' %}  <!-- Move this to the top -->
+
+{% load form_filters %}  <!-- Load the custom filter below extends -->
+
+{% block title %}Register - My Website{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="text-center">Create an Account</h1>
+        <div class="register-form">
+            <form method="POST">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label for="id_username">Username</label>
+                    {{ form.username|add_class:"form-control" }}  <!-- Added class for styling -->
+                    {% if form.username.errors %}
+                        <div class="error-message">
+                            {% for error in form.username.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_password1">Password</label>
+                    {{ form.password1|add_class:"form-control" }}  <!-- Added class for styling -->
+                    {% if form.password1.errors %}
+                        <div class="error-message">
+                            {% for error in form.password1.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_password2">Confirm Password</label>
+                    {{ form.password2|add_class:"form-control" }}  <!-- Added class for styling -->
+                    {% if form.password2.errors %}
+                        <div class="error-message">
+                            {% for error in form.password2.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
+            </form>
+        </div>
+
+        <p class="text-center mt-3">
+            Already have an account? <a href="{% url 'login' %}">Login here</a>
+        </p>
+    </div>
+{% endblock %}
+
+{% block css %}
+    <style>
+        /* Body to cover full screen and center content */
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f7fc; /* Light background color */
+        }
+
+        /* Container */
+        .container {
+            max-width: 600px;
+            width: 100%;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            font-family: 'Arial', sans-serif;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        /* Form */
+        .register-form {
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 16px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #f1f1f1;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #007BFF;
+            background-color: #fff;
+            outline: none;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .btn {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* Link styling */
+        p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Small devices */
+        @media (max-width: 576px) {
+            .container {
+                padding: 15px;
+                margin: 20px;
+            }
+
+            .register-form {
+                padding: 20px;
+            }
+        }
+    </style>
+{% endblock %}
